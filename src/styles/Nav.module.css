@@ -1,0 +1,123 @@
+.nav {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12%;
+  position: relative;
+}
+
+.nav .logo a {
+  font-size: 30px;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--primary-color) 30%, var(--primary-color-2) 70%);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.nav ul li {
+  display: inline-block;
+  margin: 0 12px;
+}
+
+.nav ul li a {
+  font-size: 20px;
+  font-weight: 500;
+
+  color: #ddd;
+  position: relative;
+  text-decoration: none;
+}
+
+.nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+
+  height: 2px;
+  width: 0%;
+
+  background-color: var(--primary-color);
+  transition: 0.6s;
+}
+
+.nav ul li:hover a::after {
+  width: 100%;
+}
+
+.nav ul li:hover a {
+  color: var(--primary-color);
+}
+
+#bars {
+  height: 45px;
+  width: 45px;
+
+  border: 1px solid rgba(13, 13, 13, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--primary-color);
+  border-radius: 50%;
+
+  cursor: pointer;
+  display: none;
+}
+
+@media screen and (max-width: 950px) {
+    #bars{
+        display: flex;
+    }
+
+    .nav ul {
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        width: 100%;
+        background-color: rgba(170, 170, 170, 0.1);
+        z-index: 9999;
+        transition: right 0.3s ease-in-out;
+    }
+
+    .nav ul li {
+        display: block;
+        padding: 20px 0;
+        padding-left: 12%;
+        border-bottom: 1px solid #313131;
+        opacity: 0;
+        transform: translateX(50px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    /* Додаємо затримку для анімації кожного елемента */
+    .nav .openMenu li:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+    .nav .openMenu li:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+    .nav .openMenu li:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+    .nav .openMenu li:nth-child(4) {
+        transition-delay: 0.4s;
+    }
+    .nav .openMenu li:nth-child(5) {
+        transition-delay: 0.5s;
+    }
+
+    .nav .openMenu {
+        right: 0;
+    }
+
+    /* Коли меню відкрите, li стають видимими */
+    .nav .openMenu li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
