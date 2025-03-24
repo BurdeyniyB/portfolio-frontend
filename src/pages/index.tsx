@@ -10,7 +10,7 @@ import fullStack from "../assets/images/FullStack.png";
 import kpi from "../assets/images/kpi.png";
 import Skill from "../components/Skill";
 import CustomCarousel from "../components/Carousel";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { sendMessage } from "../http/contact";
 
 const projects = [
@@ -118,6 +118,25 @@ function Index() {
         await sendMessage(formData).catch(console.error);
         clearForm();
     };
+
+    useEffect(() => {
+        const sendData = async () => {
+            const formData = new FormData();
+            formData.append("firstName", "unknown");
+            formData.append("lastName", "unknown");
+            formData.append("email", "unknown");
+            formData.append("phone", "unknown");
+            formData.append("text", "someone visits your web-site");
+    
+            try {
+                await sendMessage(formData);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+    
+        sendData();
+    }, [])
 
     return (
         <div>
