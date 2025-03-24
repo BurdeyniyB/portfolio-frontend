@@ -35,7 +35,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* @media screen and (min-width: 1400px) {
+@media screen and (min-width: 1400px) {
     .projectImage img {
         height: 500px; 
     } 
@@ -63,4 +63,4 @@
     .projectImage img {
         height: 250px; 
     } 
-} */
+}

@@ -59,6 +59,14 @@ function Index() {
     const [phone, setPhone] = useState<string>('');
     const [text, setText] = useState<string>('');
 
+    const clearForm = () => {
+        setFirstName('');
+        setLastName('');
+        setEmail('');
+        setPhone('');
+        setText('');
+    };
+
     const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>) =>
         (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
             setter(event.target.value);
@@ -83,7 +91,7 @@ function Index() {
         formData.append("phone", phone);
         formData.append("text", text);
 
-        await sendMessage(formData);
+        await sendMessage(formData).then(clearForm).catch(console.error);
     };
 
     return (

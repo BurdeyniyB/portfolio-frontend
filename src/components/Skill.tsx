@@ -9,7 +9,7 @@ const Skill: React.FC<SkillProps> = ({ name, level }) => {
     return (
         <div className={indexCSS.Skill}>
             <h4>{name}</h4>
-            <div className={indexCSS.SkillBar} data-value={`${level}%`} style={{ "--skill-width": `${level}%` } as React.CSSProperties}></div>
+            <div className={indexCSS.SkillBar} style={{ "--skill-width": `${level}%` } as React.CSSProperties}></div>
         </div>
     );
 }
