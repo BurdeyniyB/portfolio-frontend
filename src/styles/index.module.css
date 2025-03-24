@@ -204,6 +204,12 @@
   }
 }
 
+@media screen and (min-width: 1200px) {
+  .headerContent{
+    margin-top: 50px;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .headerContainer {
     flex-direction: column-reverse;
