@@ -12,10 +12,13 @@
   font-family: "IBM Plex sans";
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
+  overflow-y: auto;
   overflow-x: hidden; /* Запобігає горизонтальному скролу */
 }
 
@@ -24,7 +27,6 @@ html, body {
   display: flex;
   flex-direction: column;
 }
-
 
 :root {
   --primary-color: hsl(0, 0%, 90%);

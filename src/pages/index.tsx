@@ -58,6 +58,14 @@ function Index() {
     const [email, setEmail] = useState<string>('');
     const [phone, setPhone] = useState<string>('');
     const [text, setText] = useState<string>('');
+    const [errors, setErrors] = useState({
+        firstName: false,
+        lastName: false,
+        email: false,
+        phone: false,
+        text: false
+    });
+
 
     const clearForm = () => {
         setFirstName('');
@@ -65,6 +73,10 @@ function Index() {
         setEmail('');
         setPhone('');
         setText('');
+    };
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     const handleInputChange = (setter: React.Dispatch<React.SetStateAction<string>>) =>
@@ -84,6 +96,18 @@ function Index() {
     const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
 
+        const newErrors = {
+            firstName: firstName.trim() === "",
+            lastName: lastName.trim() === "",
+            email: email.trim() === "",
+            phone: phone.trim() === "",
+            text: text.trim() === ""
+        };
+
+        setErrors(newErrors);
+
+        if (Object.values(newErrors).includes(true)) return;
+
         const formData = new FormData();
         formData.append("firstName", firstName);
         formData.append("lastName", lastName);
@@ -91,12 +115,13 @@ function Index() {
         formData.append("phone", phone);
         formData.append("text", text);
 
-        await sendMessage(formData).then(clearForm).catch(console.error);
+        await sendMessage(formData).catch(console.error);
+        clearForm();
     };
 
     return (
         <div>
-            <div className={indexCSS.headerWrapper}>
+            <div id="home" className={indexCSS.headerWrapper}>
                 <Nav />
                 <div className={indexCSS.headerContainer}>
                     <div className={indexCSS.headerContent}>
@@ -285,12 +310,14 @@ function Index() {
                                 placeholder="First Name"
                                 value={firstName}
                                 onChange={handleInputChange(setFirstName)}
+                                className={errors.firstName ? indexCSS.error : ""}
                             />
                             <input
                                 type="text"
                                 placeholder="Last Name"
                                 value={lastName}
                                 onChange={handleInputChange(setLastName)}
+                                className={errors.lastName ? indexCSS.error : ""}
                             />
                         </div>
 
@@ -300,12 +327,14 @@ function Index() {
                                 placeholder="Email"
                                 value={email}
                                 onChange={handleInputChange(setEmail)}
+                                className={errors.email ? indexCSS.error : ""}
                             />
                             <input
                                 type="text"
                                 placeholder="Enter phone"
                                 value={phone}
                                 onChange={handleInputChange(setPhone)}
+                                className={errors.phone ? indexCSS.error : ""}
                             />
                         </div>
 
@@ -313,8 +342,10 @@ function Index() {
                             placeholder="Message"
                             value={text}
                             onChange={handleInputChange(setText)}
-                        ></textarea>
-                        <button onClick={(e) => handleSubmit(e)}>Submit</button>
+                            className={errors.text ? indexCSS.error : ""}
+                        />
+
+                        <button onClick={handleSubmit}>Submit</button>
                     </div>
                     <div className={indexCSS.contact_details}>
                         <h4>Contact Info</h4>
@@ -348,7 +379,7 @@ function Index() {
 
             <section className={indexCSS.footer}>
                 <div className={indexCSS.footerLinks}>
-                    <a href="#">Home</a>
+                    <a href="#home" onClick={scrollToTop}>Home</a>
                     <a href="#about">About</a>
                     <a href="#skills">Skills</a>
                     <a href="#portfolio">Portfolio</a>
