@@ -268,8 +268,8 @@ function Index() {
                 </div>
             </section>
 
-            <section id="portfolio" className={indexCSS.portfolioContainer}>
-                <h2 className="SectionTitle">Portfolio</h2>
+            <section id="projects" className={indexCSS.portfolioContainer}>
+                <h2 className="SectionTitle">Projects</h2>
 
                 <div className={indexCSS.projects}>
                     {projects.map((project, index) => (
@@ -382,7 +382,7 @@ function Index() {
                     <a href="#home" onClick={scrollToTop}>Home</a>
                     <a href="#about">About</a>
                     <a href="#skills">Skills</a>
-                    <a href="#portfolio">Portfolio</a>
+                    <a href="#projects">Projects</a>
                     <a href="#contact">Contact</a>
                 </div>
                 <p>@copyright 2025 all rights reserved</p>
