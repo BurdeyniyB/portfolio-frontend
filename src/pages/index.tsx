@@ -127,14 +127,14 @@ function Index() {
             formData.append("email", "unknown");
             formData.append("phone", "unknown");
             formData.append("text", "someone visits your web-site");
-    
+
             try {
                 await sendMessage(formData);
             } catch (error) {
                 console.error(error);
             }
         };
-    
+
         sendData();
     }, [])
 
@@ -280,7 +280,7 @@ function Index() {
                     <div className={indexCSS.aboutCard}>
                         <img src={kpi} alt="Education" />
                         <div className={indexCSS.aboutCardContent}>
-                            <h3>Bachelor of Software Engineering</h3>
+                            <h3>Bachelor of Computer Science</h3>
                             <p>National Technical University of Ukraine "Igor Sikorsky Kyiv Polytechnic Institute"</p>
                         </div>
                     </div>
@@ -321,8 +321,11 @@ function Index() {
 
                 <div className={indexCSS.contact}>
                     <div className={indexCSS.contact_form}>
-                        <h4>Send a Message</h4>
-
+                        <div>
+                            <h4>Send a Message</h4>
+                            <p className={indexCSS.contact_smallText}>You may experience some delay because the application is hosted on a free server, which needs to wake up before processing requests.</p>
+                        </div>
+                        
                         <div className={indexCSS.input_wrapper}>
                             <input
                                 type="text"
